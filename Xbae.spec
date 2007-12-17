@@ -15,7 +15,6 @@ License:	BSD
 Group:		System/Libraries
 Url:		http://xbae.sourceforge.net/
 Source:		http://prdownloads.sourceforge.net/xbae/%srcname-%version.tar.gz
-BuildRoot:	%{_tmppath}/%name-root
 BuildRequires:	lesstif-devel libxpm-devel X11-devel glibc-static-devel groff-for-man
 Requires:	%libname = %version
 
