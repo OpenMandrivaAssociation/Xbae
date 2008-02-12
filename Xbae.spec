@@ -20,7 +20,7 @@ BuildRequires:	lesstif-devel libxpm-devel X11-devel glibc-static-devel groff-for
 Requires:	%libname = %version
 
 %description
-XbaeMatrix is a free Motif table widget (also compatible with the free LessTif) 
+XbaeMatrix is a free Motif table widget (also compatible with the free LessTif)
 which presents an editable array of string data to the user in a scrollable 
 table similar to a spreadsheet. The rows and columns of the Matrix may 
 optionally be labelled. A number of "fixed" and "trailing fixed" rows or
