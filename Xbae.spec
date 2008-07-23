@@ -1,7 +1,7 @@
 %define name 	Xbae
 %define srcname	xbae
 %define version	4.60.4
-%define release	%mkrel 1
+%define release	%mkrel 3
 
 %define major		4
 %define libname		%mklibname %name %major
