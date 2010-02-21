@@ -16,7 +16,12 @@ Group:		System/Libraries
 Url:		http://xbae.sourceforge.net/
 Source:		http://prdownloads.sourceforge.net/xbae/%srcname-%version.tar.gz
 BuildRoot:	%{_tmppath}/%name-root
-BuildRequires:	lesstif-devel libxpm-devel X11-devel glibc-static-devel groff-for-man
+BuildRequires:	libx11-devel
+BuildRequires:	lesstif-devel
+BuildRequires:	libxt-devel
+BuildRequires:	libxp-devel
+BuildRequires:	libxmu-devel
+BuildRequires:	libxpm-devel
 Requires:	%libname = %version
 
 %description
@@ -54,20 +59,15 @@ you should install %name-devel.  You'll also need to have the %name
 package installed.
 
 %prep
-rm -rf $RPM_BUILD_ROOT
-
 %setup -q -n %srcname-%version
 
 %build
-export LESSTIFTOP=$PWD
-
-export CFLAGS="$RPM_OPT_FLAGS"
-%configure --enable-shared --disable-static --disable-debug
-
+%configure2_5x --enable-shared --disable-static --disable-debug
 %make
 
 %install
-%makeinstall
+rm -fr %buildroot
+%makeinstall_std
 
 rm -rf $RPM_BUILD_ROOT/%_prefix/Xbae
 
