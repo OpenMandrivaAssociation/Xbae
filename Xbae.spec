@@ -1,21 +1,17 @@
-%define name 	Xbae
 %define srcname	xbae
-%define version	4.60.4
-%define release	%mkrel 4
 
 %define major		4
 %define libname		%mklibname %name %major
 %define develname	%mklibname %name -d
 
 Summary:	Xbae Widget Set
-Name:		%name
-Version:	%version
-Release:	%release
+Name:		Xbae
+Version:	4.60.4
+Release:	5
 License:	BSD
 Group:		System/Libraries
 Url:		http://xbae.sourceforge.net/
-Source:		http://prdownloads.sourceforge.net/xbae/%srcname-%version.tar.gz
-BuildRoot:	%{_tmppath}/%name-root
+Source0:	http://prdownloads.sourceforge.net/xbae/%srcname-%version.tar.gz
 BuildRequires:	libx11-devel
 BuildRequires:	lesstif-devel
 BuildRequires:	libxt-devel
@@ -46,8 +42,8 @@ columns may be specified.
 Summary:        Development tools for programs which will use the %name library
 Group:          Development/Other
 Requires:       %libname = %{version}
-Provides:       %{name}-devel = %{version}-%{release}
-Provides:       lib%{name}-devel = %{version}-%{release}
+Provides:       %{name}-devel = %{EVRD}
+Provides:       lib%{name}-devel = %{EVRD}
 Obsoletes:	%{mklibname Xbae 4 -d}
 
 %description -n %develname
@@ -66,35 +62,81 @@ package installed.
 %make
 
 %install
-rm -fr %buildroot
 %makeinstall_std
 
-rm -rf $RPM_BUILD_ROOT/%_prefix/Xbae
-
-%if %mdkversion < 200900
-%post -n %libname -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %libname -p /sbin/ldconfig
-%endif
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}/%_prefix/Xbae
 
 %files
-%defattr (-,root,root)
 %doc AUTHORS ChangeLog COPYING NEWS README
 %{_mandir}/man3/*
 %_datadir/Xbae
 
 %files -n %libname
-%defattr (-,root,root)
 %_libdir/*.so.*
 
 %files -n %develname
-%defattr (-,root,root)
 %doc doc/*.html
 %_includedir/%{name}
 %_libdir/*.so
-%_libdir/*.la
+
+
+%changelog
+* Sun Feb 21 2010 Funda Wang <fwang@mandriva.org> 4.60.4-4mdv2010.1
++ Revision: 508927
+- simplify spec file
+
+  + Thierry Vignaud <tvignaud@mandriva.com>
+    - rebuild
+
+* Wed Jul 23 2008 Thierry Vignaud <tvignaud@mandriva.com> 4.60.4-3mdv2009.0
++ Revision: 242970
+- rebuild
+- fix description-line-too-long
+- kill re-definition of %%buildroot on Pixel's request
+- buildrequires X11-devel instead of XFree86-devel
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Fri Jul 20 2007 Adam Williamson <awilliamson@mandriva.org> 4.60.4-1mdv2008.0
++ Revision: 54026
+- rebuild against new lesstif
+- move docs out of lib package to devel package
+- move out of /usr/X11R6
+- new devel policy
+- drop pointless manual provide in lib package
+- spec clean
+- new release 4.60.4
+- Import Xbae
+
+
+
+
+* Tue Mar 21 2006 Lenny Cartier <lenny@mandriva.com> 4.60.2-1mdk
+- 4.60.2
+
+* Thu May 12 2005 Olivier Thauvin <nanardon@mandriva.org> 4.60.0-1mdk
+- 4.60.0
+
+* Tue Dec 07 2004 Lenny Cartier <lenny@mandrakesoft.com> 4.50.99-1mdk
+- 4.50.99
+
+* Sat Nov 15 2003 Olivier Thauvin <thauvin@aerov.jussieu.fr> 4.9.11-4mdk 
+- move man files in separate package
+- fix provides
+- Franck Villaume <fvill@freesurf.fr>
+  - more buildrequires : groff-for-man
+
+* Sat Apr 26 2003 Lenny Cartier <lenny@mandrakesoft.com> 4.9.11-3mdk
+- adjust buildrequires
+
+* Thu Jan 30 2003 Lenny Cartier <lenny@mandrakesoft.com> 4.9.11-2mdk
+- rebuild
+
+* Thu Oct 03 2002 Lenny Cartier <lenny@mandrakesoft.com> 4.9.11-1mdk
+- libification
+- from Austin Acton <aacton@yorku.ca> :
+	- initial package for Mandrake 9.0
