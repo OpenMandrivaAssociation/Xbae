@@ -12,12 +12,12 @@ License:	BSD
 Group:		System/Libraries
 Url:		http://xbae.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/xbae/%srcname-%version.tar.gz
-BuildRequires:	libx11-devel
+BuildRequires:	pkgconfig(x11)
 BuildRequires:	lesstif-devel
-BuildRequires:	libxt-devel
+BuildRequires:	pkgconfig(xt)
 BuildRequires:	libxp-devel
-BuildRequires:	libxmu-devel
-BuildRequires:	libxpm-devel
+BuildRequires:	pkgconfig(xmu)
+BuildRequires:	pkgconfig(xpm)
 Requires:	%libname = %version
 
 %description
