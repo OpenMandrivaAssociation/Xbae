@@ -7,7 +7,7 @@
 Summary:	Xbae Widget Set
 Name:		Xbae
 Version:	4.60.4
-Release:	7
+Release:	8
 License:	BSD
 Group:		System/Libraries
 Url:		http://xbae.sourceforge.net/
