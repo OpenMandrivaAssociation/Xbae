@@ -10,7 +10,7 @@ Version:	4.60.4
 Release:	8
 License:	BSD
 Group:		System/Libraries
-Url:		http://xbae.sourceforge.net/
+Url:		https://xbae.sourceforge.net/
 Source0:	http://prdownloads.sourceforge.net/xbae/%srcname-%version.tar.gz
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	lesstif-devel
